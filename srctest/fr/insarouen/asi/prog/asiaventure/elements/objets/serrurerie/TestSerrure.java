@@ -67,7 +67,7 @@ public class TestSerrure {
 	public void testEtatSerrure()
 	throws NomDEntiteDejaUtiliseDansLeMondeException, ActivationImpossibleException{
 
-		PiedDeBiche piedDeBiche = new PiedDeBiche("piedDeBiche", this.monde);
+		PiedDeBiche piedDeBiche = new PiedDeBiche("Pied de biche", this.monde);
 
 		assertThat(this.serrure.getEtat(), is(Etat.VERROUILLE));
 

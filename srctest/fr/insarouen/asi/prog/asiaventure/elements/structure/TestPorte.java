@@ -63,4 +63,3 @@ public class TestPorte {
 		assertThat(this.porte.getEtat(), is(Etat.CASSE));
 	}
 }
-
