@@ -41,9 +41,8 @@ public class Vivant extends Entite {
 
 	}
 
-	/**import java.util.*;
-
-	 * Ajoute un objet dans le vivant
+	/**
+	 * Prendre un objet de la pièce et le mettre dans l'inventaire du vivant
 	 * @param Objet objet
 	 * @throws ObjetAbsentDeLaPieceException        si l'objet est absent de la pièce où se situe le vivant
 	 * @throws ObjetNonDeplacableDeLaPieceException si l'objet n'est pas déplacable
@@ -57,7 +56,7 @@ public class Vivant extends Entite {
 	}
 
 	/**
-	 * Ajoute un objet dans le vivant
+	 * Prendre un objet de la pièce et le mettre dans l'inventaire du vivant
 	 * @param String nomObj
 	 * @throws ObjetAbsentDeLaPieceException        si l'objet est absent de la pièce où se situe le vivant
 	 * @throws ObjetNonDeplacableDeLaPieceException si l'objet n'est pas déplacable
@@ -71,7 +70,7 @@ public class Vivant extends Entite {
 	}
 
 	/**
-	 * Retire un objet du vivant
+	 * Retirer un objet de l'inventaire du vivant et le déposer dans la pièce
 	 * @param Objet objet
 	 * @throws ObjetNonPossedeParLeVivantException si le vivant ne possède pas l'objet
 	 */
@@ -87,7 +86,7 @@ public class Vivant extends Entite {
 	}
 
 	/**
-	 * Retire un objet du vivant
+	 * Retirer un objet de l'inventaire du vivant et le déposer dans la pièce
 	 * @param String nomObj
 	 * @throws ObjetNonPossedeParLeVivantException si le vivant ne possède pas l'objet
 	 */
@@ -101,10 +100,12 @@ public class Vivant extends Entite {
 
 		this.piece.deposer(retour);
 	}
-
+	
 	/**
 	 * Changer la pièce du vivant
-	 * @param Porte porte La porte a franchir
+	 * @param Porte la porte à franchir
+	 * @throws PorteFermeException                  si la porte n'est pas ouverte
+	 * @throws PorteInexistanteDansLaPieceException si la porte n'est pas présente dans la pièce
 	 */
 	public void franchir(Porte porte)
 	throws PorteFermeException, PorteInexistanteDansLaPieceException {
@@ -130,7 +131,9 @@ public class Vivant extends Entite {
 
 	/**
 	 * Changer la pièce du vivant
-	 * @param Porte porte La porte a franchir
+	 * @param String nom de la porte à franchir
+	 * @throws PorteFermeException                  si la porte n'est pas ouverte
+	 * @throws PorteInexistanteDansLaPieceException si la porte n'est pas présente dans la pièce
 	 */
 	public void franchir(String nomPorte)
 	throws PorteFermeException, PorteInexistanteDansLaPieceException {
@@ -158,8 +161,8 @@ public class Vivant extends Entite {
 	}
 
 	/**
-	 * Retourne un objet présent dans le vivant via son nom
-	 * @param String nomObj le nom de l'objet que l'on cherche
+	 * Retourne un objet présent dans l'inventaire du vivant
+	 * @param String nom de l'objet que l'on veut
 	 * @return Objet l'objet recherché
 	 * @throws ObjetNonPossedeParLeVivantException si le vivant ne possède pas cet objet
 	 */
@@ -177,15 +180,15 @@ public class Vivant extends Entite {
 	/**
 	 * Est-ce que l'objet est présent dans le vivant
 	 * @param Objet objet
-	 * @return Booleen
+	 * @return booleen
 	 */
-	public Boolean possede(Objet objet) {
+	public boolean possede(Objet objet) {
 
 		return this.objets.containsKey(objet.getNom());
 	}
 
 	/**
-	 * Getter piece
+	 * Récupère la pièce où se situe le vivant
 	 * @return Piece pièce
 	 */
 	public Piece getPiece() {
@@ -194,7 +197,7 @@ public class Vivant extends Entite {
 
 
 	/**
-	 * Getter pointVie
+	 * Récupère le nombre de points de vie du vivant
 	 * @return int Points de vie
 	 */
 	public int getPointVie() {
@@ -202,7 +205,7 @@ public class Vivant extends Entite {
 	}
 
 	/**
-	 * Getter pointForce
+	 * Récupère le nombre de points de force du vivant
 	 * @return int Points de force
 	 */
 	public int getPointForce() {
@@ -211,20 +214,21 @@ public class Vivant extends Entite {
 
 	/**
 	 * Est-ce que le vivant est mort ?
-	 * @return Booleen vrai si le vivant a 0 ou moins points de vie
+	 * @return booleen true si le vivant a 0 ou moins points de vie
 	 */
-	public Boolean estMort() {
+	public boolean estMort() {
 		return (this.getPointVie() <= 0);
 	}
 
-/**
-	 * Setter pointVie
+	/**
+	 * Fixe le nombre de points de vie du vivant
 	 * @param int Points de vie
 	 */
 	public void setPointVie(int pointVie) {
 		
 		this.pointVie = pointVie;
 	}
+	
 	/**
 	 * Affiche un vivant
 	 * @return String
