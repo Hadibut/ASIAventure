@@ -6,7 +6,6 @@ public class ObjetAbsentDeLaPieceException extends PieceException {
 		super();
 	}
 
-
 	public ObjetAbsentDeLaPieceException(String msg) {
 		super(msg);
 	}

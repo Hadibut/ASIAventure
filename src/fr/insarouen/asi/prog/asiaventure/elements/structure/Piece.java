@@ -15,7 +15,6 @@ public class Piece extends ElementStructurel {
 	 * Crée une nouvelle Pièce
 	 * @param String nom
 	 * @param Monde monde
-	 * @return Piece
 	 * @throws NomDEntiteDejaUtiliseDansLeMondeException si une entité avec le même nom est déjà présente
 	 */
 	public Piece(String nom, Monde monde)
@@ -79,9 +78,9 @@ public class Piece extends ElementStructurel {
 	}
 
 	/**
-	 * Est-ce que la pièce contient l'objet
+	 * Est-ce que la pièce contient l'objet ?
 	 * @param Objet objet
-	 * @return Booleen 
+	 * @return booleen 
 	 */
 	public Boolean contientObjet(Objet objet) {
 
@@ -89,47 +88,74 @@ public class Piece extends ElementStructurel {
 	}
 
 	/**
-	 * Est-ce que la pièce contient l'objet
-	 * @param String nomObj le nom de l'objet dont on test la présence
-	 * @return Booleen 
+	 * Est-ce que la pièce contient l'objet ?
+	 * @param String nomObj le nom de l'objet dont on teste la présence
+	 * @return booleen 
 	 */
 	public Boolean contientObjet(String nomObj) {
 
 		return this.objets.containsKey(nomObj);
 	}
 
+	/**
+	 * Ajouter une porte à la pièce
+	 * @param Porte porte à ajouter
+	 */
 	public void addPorte(Porte porte) {
 
 		this.portes.put(porte.getNom(), porte);
 	}
 
-	public Boolean aLaPorte(Porte porte) {
+	/**
+	 * Est-ce que la pièce possède cette porte ?
+	 * @param Porte porte à tester
+	 * @return boolean true si la porte est présente 
+	 */
+	public boolean aLaPorte(Porte porte) {
 
 		return this.portes.containsKey(porte.getNom());
 	}
 
-	public Boolean aLaPorte(String nomPorte) {
+	/**
+	 * Est-ce que la pièce possède cette porte ?
+	 * @param String nom de la porte à tester
+	 * @return boolean true si la porte est présente 
+	 */
+	public boolean aLaPorte(String nomPorte) {
 
 		return this.portes.containsKey(nomPorte);
 	}
 
+	/**
+	 * Récupérer une porte
+	 * @param String nomPorte
+	 * @return Porte porte récupérée
+	 */
 	public Porte getPorte(String nomPorte) {
 
 		return this.portes.get(nomPorte);
 	}
 
+	/**
+	 * Récupère toutes les portes d'une pièce
+	 * @return HashMap<String,Porte> collection de portes
+	 */
 	public HashMap<String,Porte> getPortes() {
 
 		return this.portes;
 	}
 
+	/**
+	 * Récupère tous les objets d'une pièce
+	 * @return HashMap<String,Objet> collection d'objets
+	 */
 	public HashMap<String,Objet> getObjets() {
 
 		return this.objets;
 	}
 
 	/**
-	 * Ajouter un Vivant dans la pièce
+	 * Ajouter un vivant dans la pièce
 	 * @param Vivant vivant à ajouter
 	 */
 	public void entrer(Vivant vivant) {
@@ -176,9 +202,9 @@ public class Piece extends ElementStructurel {
 	/**
 	 * Est-ce que le vivant est présent ?
 	 * @param Vivant vivant
-	 * @return Booleen
+	 * @return booleen
 	 */
-	public Boolean contientVivant(Vivant vivant) {
+	public boolean contientVivant(Vivant vivant) {
 
 		return this.vivants.containsKey(vivant.getNom());
 	}
@@ -186,7 +212,7 @@ public class Piece extends ElementStructurel {
 	/**
 	 * Est-ce que le vivant est présent ?
 	 * @param String nomVivant nom du vivant dont on test la présence
-	 * @return Booleen
+	 * @return booleen
 	 */
 	public Boolean contientVivant(String nomVivant) {
 	

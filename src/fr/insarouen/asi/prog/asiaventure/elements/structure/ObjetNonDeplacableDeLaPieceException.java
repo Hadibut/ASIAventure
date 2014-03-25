@@ -6,7 +6,6 @@ public class ObjetNonDeplacableDeLaPieceException extends PieceException {
 		super();
 	}
 
-
 	public ObjetNonDeplacableDeLaPieceException(String msg) {
 		super(msg);
 	}

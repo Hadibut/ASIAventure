@@ -14,6 +14,14 @@ public class Porte extends ElementStructurel implements Activable {
 	private Serrure serrure;
 	private Etat etat;
 
+	/**
+	 * Crée une nouvelle porte
+	 * @param String nom
+	 * @param Monde monde
+	 * @param Piece pieceA
+	 * @param Piece pieceB
+	 * @throws NomDEntiteDejaUtiliseDansLeMondeException si une porte du même nom est déjà présente dans ce monde
+	 */
 	public Porte(String nom, Monde monde, Piece pieceA, Piece pieceB)
 	throws NomDEntiteDejaUtiliseDansLeMondeException {
 
@@ -25,6 +33,15 @@ public class Porte extends ElementStructurel implements Activable {
 		this.pieceB.addPorte(this);
 	}
 
+	/**
+	 * Crée une nouvelle porte
+	 * @param String nom
+	 * @param Monde monde
+	 * @param Serrure serrure
+	 * @param Piece pieceA
+	 * @param Piece pieceB
+	 * @throws NomDEntiteDejaUtiliseDansLeMondeException si une porte du même nom est déjà présente dans ce monde
+	 */
 	public Porte(String nom, Monde monde, Serrure serrure, Piece pieceA, Piece pieceB)
 	throws NomDEntiteDejaUtiliseDansLeMondeException {
 
@@ -39,11 +56,20 @@ public class Porte extends ElementStructurel implements Activable {
 			this.etat = serrure.getEtat();
 	}
 
-	public boolean activableAvec(Objet obj) {
+	/**
+	 * Est-ce que la porte est activable avec cet objet ?
+	 * @param Objet objet
+	 * @return boolean true si la porte est activable
+	 */
+	public boolean activableAvec(Objet objet) {
 
-		return (obj instanceof PiedDeBiche || obj instanceof Clef);
+		return (objet instanceof PiedDeBiche || objet instanceof Clef);
 	}
  
+ 	/**
+ 	 * Active la porte sans objet
+ 	 * @throws ActivationImpossibleException si la porte ne peut pas être activer
+ 	 */
 	public void activer()
 	throws ActivationImpossibleException {
 		
@@ -59,15 +85,20 @@ public class Porte extends ElementStructurel implements Activable {
 		}
 	}
  
-	public void activerAvec(Objet obj)
+ 	/**
+ 	 * Activer la porte avec un objet
+ 	 * @param Objet objet
+ 	 * @throws ActivationImpossibleException si la porte n'est pas activable avec cet objet
+ 	 */
+	public void activerAvec(Objet objet)
 	throws ActivationImpossibleException {
 
-		if (!this.activableAvec(obj))
-			throw new ActivationImpossibleException("L'objet " + obj.getNom() + " ne permet pas d'ouvrir la porte " + this.getNom() + ".");
+		if (!this.activableAvec(objet))
+			throw new ActivationImpossibleException("L'objet " + objet.getNom() + " ne permet pas d'ouvrir la porte " + this.getNom() + ".");
 
 		if (this.getEtat() != Etat.CASSE) {
 
-			if (obj instanceof PiedDeBiche)
+			if (objet instanceof PiedDeBiche)
 				this.etat = Etat.CASSE;
 			
 			if (this.getSerrure() == null) {
@@ -76,7 +107,7 @@ public class Porte extends ElementStructurel implements Activable {
 			}
 			else {
 
-				this.getSerrure().activerAvec(obj);
+				this.getSerrure().activerAvec(objet);
 				
 				if (this.getSerrure().getEtat() == Etat.VERROUILLE)
 					this.etat = Etat.VERROUILLE;
@@ -87,16 +118,29 @@ public class Porte extends ElementStructurel implements Activable {
 		}
 	}
 
+	/**
+	 * Retourne l'état de la porte
+	 * @return Etat : OUVERT, FERME, VEROUILLE ou CASSE
+	 */
 	public Etat getEtat() {
 
 		return this.etat;
 	}
 
+	/**
+	 * Retourne la serrure de la porte
+	 * @return Serrure serrure
+	 */
 	public Serrure getSerrure() {
 
 		return this.serrure;
 	}
 
+	/**
+	 * Retourne la pièce de l'autre côté de la porte
+	 * @param Piece pièce où l'on est
+	 * @return Piece pièce de l'autre côté de la porte
+	 */
 	public Piece getPieceAutreCote(Piece piece) {
 
 		if (piece.equals(this.pieceA))
@@ -109,8 +153,8 @@ public class Porte extends ElementStructurel implements Activable {
 	}
 
 	/**
-	 * Donne le nom du vivant
-	 * @return String nom 
+	 * Décris la porte
+	 * @return String 
 	 */
 	public String toString() {
 

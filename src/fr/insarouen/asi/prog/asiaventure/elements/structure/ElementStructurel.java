@@ -4,12 +4,11 @@ import fr.insarouen.asi.prog.asiaventure.*;
 import fr.insarouen.asi.prog.asiaventure.elements.Entite;
 
 public abstract class ElementStructurel extends Entite {
-	
+
 	/**
-	 * Crée une nouvelle Entite
+	 * Crée un nouvel élément structurel
 	 * @param String nom
 	 * @param Monde monde
-	 * @return ElementStructurel créé
 	 * @throws NomDEntiteDejaUtiliseDansLeMondeException si un ElementStructurel du même nom est déjà présent dans ce monde
 	 */
 	public ElementStructurel(String nom, Monde monde)

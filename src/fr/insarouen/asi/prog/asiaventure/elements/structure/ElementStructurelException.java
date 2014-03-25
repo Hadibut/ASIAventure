@@ -8,7 +8,6 @@ public class ElementStructurelException extends ASIAventureException {
 		super();
 	}
 
-
 	public ElementStructurelException(String msg) {
 		super(msg);
 	}
