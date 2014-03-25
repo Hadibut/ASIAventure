@@ -84,9 +84,9 @@ public class JoueurHumain extends Vivant {
 
 	} 	
 
-	private void commandeOuvrirPorte(String nomPorte, String nomObjet)throws ActivationImpossibleException{
+	private void commandeOuvrirPorte(String nomPorte, String nomObjet)throws ActivationImpossibleException, ObjetNonPossedeParLeVivantException{
 
-		this.piece.getporte(nomPorte).activerAvec(this.getObjet(nomObjet);
+		this.piece.getPorte(nomPorte).activerAvec(this.getObjet(nomObjet));
 
 	}  	
 

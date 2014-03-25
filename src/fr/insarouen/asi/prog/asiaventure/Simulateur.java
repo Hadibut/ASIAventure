@@ -2,7 +2,7 @@ package fr.insarouen.asi.prog.asiaventure;
 
 import fr.insarouen.asi.prog.asiaventure.elements.vivants.*;
 import fr.insarouen.asi.prog.asiaventure.elements.objets.*;
-import fr.insarouen.asi.prog.asiaventure.elements.objets.serrurerie.Serrure;
+import fr.insarouen.asi.prog.asiaventure.elements.objets.serrurerie.*;
 import fr.insarouen.asi.prog.asiaventure.elements.structure.*;
 import fr.insarouen.asi.prog.asiaventure.elements.*;
 import fr.insarouen.asi.prog.asiaventure.*;
@@ -100,11 +100,37 @@ public class Simulateur {
 		new Porte(nomPorte, this.monde, (Piece) this.monde.getEntite(nomPieceA), (Piece) this.monde.getEntite(nomPieceB));
 	}
 
-	// private void creerClef(StreamTokenizer st);
+	private void creerClef(StreamTokenizer st)
+	throws IOException, NomDEntiteDejaUtiliseDansLeMondeException {
+		
+		st.nextToken();
+		String nomPorte = st.sval;
 
-	// private void creerJoueurHumain(StreamTokenizer st);
+		st.nextToken();
+		String nomPiece = st.sval;
 
+		Clef clef = ((Porte) this.monde.getEntite(nomPorte)).getSerrure().creerClef();
 
+		((Piece) this.monde.getEntite(nomPiece)).deposer(clef);
+	}
+
+	private void creerJoueurHumain(StreamTokenizer st)
+	throws IOException, NomDEntiteDejaUtiliseDansLeMondeException {
+		
+		st.nextToken();
+		String nomJoueur = st.sval;
+
+		st.nextToken();
+		String pointsDeVie = st.sval;
+
+		st.nextToken();
+		String pointsDeForce = st.sval;
+
+		st.nextToken();
+		String nomPiece = st.sval;
+
+		new JoueurHumain(nomJoueur, this.monde, Integer.parseInt(pointsDeVie), Integer.parseInt(pointsDeForce), (Piece) this.monde.getEntite(nomPiece));
+	}
 	
 	public void enregistrer(java.io.ObjectOutputStream oos) throws java.io.IOException {
 
