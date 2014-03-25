@@ -6,7 +6,6 @@ public class NomDEntiteDejaUtiliseDansLeMondeException extends MondeException {
 		super();
 	}
 
-
 	public NomDEntiteDejaUtiliseDansLeMondeException(String msg) {
 		super(msg);
 	}

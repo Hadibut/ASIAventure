@@ -6,7 +6,6 @@ public class MondeException extends ASIAventureException {
 		super();
 	}
 
-
 	public MondeException(String msg) {
 		super(msg);
 	}

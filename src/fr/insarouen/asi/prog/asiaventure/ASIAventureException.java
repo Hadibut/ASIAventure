@@ -6,7 +6,6 @@ public class ASIAventureException extends Exception {
 		super();
 	}
 
-
 	public ASIAventureException(String msg) {
 		super(msg);
 	}
