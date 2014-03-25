@@ -12,7 +12,6 @@ public abstract class Entite {
 	 * Crée une nouvelle Entite
 	 * @param String nom
 	 * @param Monde monde
-	 * @return entite créé
 	 * @throws NomDEntiteDejaUtiliseDansLeMondeException si une entite du même nom est déjà présente dans ce monde
 	 */
 	public Entite(String nom, Monde monde)
@@ -22,34 +21,38 @@ public abstract class Entite {
 		this.monde = monde;
 		this.monde.ajouter(this);
 	}
+	
 	/**
-	 * Donne le nom du vivant
+	 * Donne le nom de l'entité
 	 * @return String nom 
 	 */
 	public String getNom() {
 
 		return this.nom;
 	}
+
 	/**
-	 * Donne le monde ou se trouve le vivant
+	 * Donne le monde où se trouve le vivant
 	 * @return Monde monde
 	 */
 	protected Monde getMonde() {
 
 		return this.monde;
 	}
+
 	/**
-	 * Donne le nom du vivant
-	 * @return String nom 
+	 * Affiche l'entité
+	 * @return String 
 	 */
 	public String toString() {
 
 		return this.getNom();
 	}
+
 	/**
 	 * Verifie l'egalité de deux entités
 	 * @param Object object
-	 * @return Boolean 
+	 * @return boolean 
 	 */
 	public boolean equals(Object object) {
 
