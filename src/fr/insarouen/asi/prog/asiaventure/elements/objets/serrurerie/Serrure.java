@@ -84,17 +84,31 @@ public class Serrure extends Objet implements Activable {
 		return false;
 	}
 
+	/**
+	 * Active une serrure sans objet
+	 * @throws ActivationImpossibleException Une serrure ne peut pas être activé sans objet. Levée à chaque fois.
+	 */
 	public void activer()
 	throws ActivationImpossibleException {
 
 		throw new ActivationImpossibleException("Une serrure ne peut pas être activé sans objet.");
 	}
 
+	/**
+	 * Est-ce que l'objet permet d'activer cette serrure ?
+	 * @param Objet objet
+	 * @return boolean true si l'objet est un PiedDeBiche ou si c'est la bonne clé
+	 */
 	public boolean activableAvec(Objet objet) {
 
 		return (objet instanceof PiedDeBiche || objet.equals(this.clef));
 	}
 
+	/**
+	 * Active la serrure avec l'objet
+	 * @param Objet objet
+	 * @throws ActivationImpossibleException si l'objet ne permet pas d'activer cette serrure
+	 */
 	public void activerAvec(Objet objet)
 	throws ActivationImpossibleException {
 
@@ -117,6 +131,10 @@ public class Serrure extends Objet implements Activable {
 		}
 	}
 
+	/**
+	 * Récupère l'état de la serrure
+	 * @return Etat État de la serrure : CASSE, VERROUILLE ou DEVERROUILLE
+	 */
 	public Etat getEtat() {
 
 		return this.etat;
