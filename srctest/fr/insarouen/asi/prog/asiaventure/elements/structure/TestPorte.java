@@ -3,6 +3,7 @@ package fr.insarouen.asi.prog.asiaventure.elements.structure;
 import fr.insarouen.asi.prog.asiaventure.*;
 import fr.insarouen.asi.prog.asiaventure.elements.*;
 import fr.insarouen.asi.prog.asiaventure.elements.objets.Objet;
+import fr.insarouen.asi.prog.asiaventure.elements.objets.serrurerie.Serrure;
 import fr.insarouen.asi.prog.asiaventure.elements.objets.PiedDeBiche;
 import fr.insarouen.asi.prog.asiaventure.elements.vivants.Vivant;
 
@@ -26,13 +27,17 @@ public class TestPorte {
 		this.pieceA = new Piece("PièceA", this.monde);
 		this.pieceB = new Piece("PièceB", this.monde);
 		this.porte = new Porte("Porte", this.monde, this.pieceA, this.pieceB);
-
 	}
 
 	@Test
-	public void testConstructeur() {
+	public void testConstructeur()
+	throws NomDEntiteDejaUtiliseDansLeMondeException {
 
 		assertThat(this.porte.getEtat(), is(Etat.FERME));
+
+		Serrure serrure = new Serrure("Serrure", this.monde);
+		Porte porteAvecSerrure = new Porte("Porte avec serrure", this.monde, serrure, this.pieceA, this.pieceB);
+		assertThat(porteAvecSerrure.getEtat(), is(Etat.VERROUILLE));
 	}
 
 	@Test
