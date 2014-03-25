@@ -4,7 +4,7 @@ import fr.insarouen.asi.prog.asiaventure.*;
 import fr.insarouen.asi.prog.asiaventure.elements.objets.Objet;
 
 public class PiedDeBiche extends Objet {
-	
+
 	/**
 	 * Crée un pied de biche
 	 * @param String nom
@@ -17,9 +17,9 @@ public class PiedDeBiche extends Objet {
 		super(nom, monde);
 	}
 
-/	**
-	 * Un pied de biche  est deplacable
-	 * @return Boolean par deffaut true
+	/**
+	 * Un pied de biche est déplacable
+	 * @return Boolean
 	 */
 	public boolean estDeplacable() {
 

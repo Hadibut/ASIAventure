@@ -8,12 +8,23 @@ public class Serrure extends Objet implements Activable {
 	private Etat etat;
 	private Clef clef;
 
+	/**
+	 * Crée une serrure
+	 * @param Monde monde
+	 * @throws NomDEntiteDejaUtiliseDansLeMondeException si une serrure du même nom est déjà présente dans ce monde
+	 */
 	public Serrure(Monde monde)
 	throws NomDEntiteDejaUtiliseDansLeMondeException {
 		
 		this(Serrure.genererNomSerrure(monde), monde);
 	}
 
+	/**
+	 * Crée une serrure
+	 * @param String nom
+	 * @param Monde monde
+	 * @throws NomDEntiteDejaUtiliseDansLeMondeException si une serrure du même nom est déjà présente dans ce monde
+	 */
 	public Serrure(String nom, Monde monde)
 	throws NomDEntiteDejaUtiliseDansLeMondeException {
 
@@ -21,6 +32,11 @@ public class Serrure extends Objet implements Activable {
 		this.etat = Etat.VERROUILLE;
 	}
 
+	/**
+	 * Génère un nom unique dans le monde pour une serrure
+	 * @param Monde monde
+	 * @return String nom de la serrure
+	 */
 	private static String genererNomSerrure(Monde monde) {
 
 		int numeroSerrure = (int)(Math.random() * (Serrure.MAXIMUMNOMALEATOIRE));
@@ -35,7 +51,11 @@ public class Serrure extends Objet implements Activable {
 		return nomSerrure;
 	}
 
-
+	/**
+	 * Crée la clef de la serrure si cette dernière n'a pas encore été récupérée
+	 * @return Clef la clé de la serrure ou null
+	 * @throws NomDEntiteDejaUtiliseDansLeMondeException si une clé du même nom est déjà présente dans ce monde
+	 */
 	public Clef creerClef()
 	throws NomDEntiteDejaUtiliseDansLeMondeException {
 
@@ -44,8 +64,6 @@ public class Serrure extends Objet implements Activable {
 
 		int numeroClef = (int)(Math.random() * (this.MAXIMUMNOMALEATOIRE));
 		String nomClef = new String("Clef n°" + numeroClef);
-
-
 
 		while (this.getMonde().getEntite(nomClef) != null) {
 
@@ -57,6 +75,10 @@ public class Serrure extends Objet implements Activable {
 		return this.clef;
 	}
 
+	/**
+	 * Une serrure n'est pas déplacable
+	 * @return Boolean
+	 */
 	public boolean estDeplacable() {
 
 		return false;
