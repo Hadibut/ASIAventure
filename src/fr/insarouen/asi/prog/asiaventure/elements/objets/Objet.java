@@ -9,7 +9,7 @@ public abstract class Objet extends Entite {
 	 * Constructeur de Objet
 	 * @param String nom de Objet
 	 * @param Monde monde 
-	 * @throws NomDEntiteDejaUtiliseDansLeMondeException Si le monde possede deja un objet du même nom
+	 * @throws NomDEntiteDejaUtiliseDansLeMondeException si une entité du même nom est déjà présente dans ce monde
 	 */
 	public Objet (String nom, Monde monde)
 	throws NomDEntiteDejaUtiliseDansLeMondeException {

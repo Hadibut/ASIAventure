@@ -20,7 +20,7 @@ public class Porte extends ElementStructurel implements Activable {
 	 * @param Monde monde
 	 * @param Piece pieceA
 	 * @param Piece pieceB
-	 * @throws NomDEntiteDejaUtiliseDansLeMondeException si une porte du même nom est déjà présente dans ce monde
+	 * @throws NomDEntiteDejaUtiliseDansLeMondeException si une entité du même nom est déjà présente dans ce monde
 	 */
 	public Porte(String nom, Monde monde, Piece pieceA, Piece pieceB)
 	throws NomDEntiteDejaUtiliseDansLeMondeException {

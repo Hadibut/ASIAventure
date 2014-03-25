@@ -8,15 +8,14 @@ import java.util.*;
 
 public class Monstre extends Vivant implements Executable {
 
-/**
-	 * Crée un nouveau Vivant
+	/**
+	 * Crée un nouveau monstre
 	 * @param String nom
 	 * @param Monde monde
 	 * @param int pointVie
 	 * @param int pointForce
 	 * @param Piece piece
 	 * @param Objet... objets
-	 * @return monstre créé
 	 * @throws NomDEntiteDejaUtiliseDansLeMondeException si une entité du même nom est déjà présente dans ce monde
 	 */
 	public Monstre(String nom, Monde monde, int pointVie, int pointForce, Piece piece, Objet... objets)

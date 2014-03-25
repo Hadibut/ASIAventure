@@ -9,7 +9,7 @@ public class PiedDeBiche extends Objet {
 	 * Crée un pied de biche
 	 * @param String nom
 	 * @param Monde monde
-	 * @throws NomDEntiteDejaUtiliseDansLeMondeException si un pied de biche du même nom est déjà présente dans ce monde
+	 * @throws NomDEntiteDejaUtiliseDansLeMondeException si une entité du même nom est déjà présente dans ce monde
 	 */
 	public PiedDeBiche(String nom, Monde monde)
 	throws NomDEntiteDejaUtiliseDansLeMondeException {

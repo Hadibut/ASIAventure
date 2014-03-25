@@ -9,7 +9,7 @@ public abstract class ElementStructurel extends Entite {
 	 * Crée un nouvel élément structurel
 	 * @param String nom
 	 * @param Monde monde
-	 * @throws NomDEntiteDejaUtiliseDansLeMondeException si un ElementStructurel du même nom est déjà présent dans ce monde
+	 * @throws NomDEntiteDejaUtiliseDansLeMondeException si une entité du même nom est déjà présente dans ce monde
 	 */
 	public ElementStructurel(String nom, Monde monde)
 	throws NomDEntiteDejaUtiliseDansLeMondeException {

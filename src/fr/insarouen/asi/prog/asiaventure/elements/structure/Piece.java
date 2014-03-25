@@ -15,7 +15,7 @@ public class Piece extends ElementStructurel {
 	 * Crée une nouvelle Pièce
 	 * @param String nom
 	 * @param Monde monde
-	 * @throws NomDEntiteDejaUtiliseDansLeMondeException si une entité avec le même nom est déjà présente
+	 * @throws NomDEntiteDejaUtiliseDansLeMondeException si une entité du même nom est déjà présente dans ce monde
 	 */
 	public Piece(String nom, Monde monde)
 	throws NomDEntiteDejaUtiliseDansLeMondeException {

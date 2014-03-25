@@ -11,7 +11,7 @@ public class Serrure extends Objet implements Activable {
 	/**
 	 * Crée une serrure
 	 * @param Monde monde
-	 * @throws NomDEntiteDejaUtiliseDansLeMondeException si une serrure du même nom est déjà présente dans ce monde
+	 * @throws NomDEntiteDejaUtiliseDansLeMondeException si une entité du même nom est déjà présente dans ce monde
 	 */
 	public Serrure(Monde monde)
 	throws NomDEntiteDejaUtiliseDansLeMondeException {
@@ -23,7 +23,7 @@ public class Serrure extends Objet implements Activable {
 	 * Crée une serrure
 	 * @param String nom
 	 * @param Monde monde
-	 * @throws NomDEntiteDejaUtiliseDansLeMondeException si une serrure du même nom est déjà présente dans ce monde
+	 * @throws NomDEntiteDejaUtiliseDansLeMondeException si une entité du même nom est déjà présente dans ce monde
 	 */
 	public Serrure(String nom, Monde monde)
 	throws NomDEntiteDejaUtiliseDansLeMondeException {
