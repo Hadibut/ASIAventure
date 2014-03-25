@@ -8,9 +8,8 @@ public class Monde {
 	private HashMap<String,Entite> entites;
 
 	/**
-	 * Crée un monde à partir d'un nom
+	 * Crée un nouveau monde
 	 * @param String nomMonde
-	 * @return Monde
 	 */
 	public Monde(String nomMonde) {
 
@@ -19,9 +18,9 @@ public class Monde {
 	}
 	
 	/**
-	 * Ajoute une entité de le monde
+	 * Ajoute une entité dans le monde
 	 * @param Entite entite
-	 * @throws NomDEntiteDejaUtiliseDansLeMondeException si l'entité est déjà présente
+	 * @throws NomDEntiteDejaUtiliseDansLeMondeException si une entité du même nom est déjà présente dans ce monde
 	 */
 	public void ajouter(Entite entite) 
 		throws  NomDEntiteDejaUtiliseDansLeMondeException {
