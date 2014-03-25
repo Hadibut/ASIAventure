@@ -61,6 +61,9 @@ public class TestSerrure {
 		Serrure autreSerrure = new Serrure("Deuxième serrure", this.monde);
 		Clef autreClef = autreSerrure.creerClef();
 		assertThat(this.serrure.activableAvec(autreClef), is(false));
+
+		Objet objet = new Objet("Objet quelconque", this.monde) {};
+		assertThat(this.serrure.activableAvec(objet), is(false));
 	}
 
 	@Test
