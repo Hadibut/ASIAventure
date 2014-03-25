@@ -39,7 +39,7 @@ public class TestSerrure {
 		assertThat(this.clef, instanceOf(Clef.class));
 
 		Clef clefNull = this.serrure.creerClef();
-		assertThat(this.clef, is(nullValue()));
+		assertThat(clefNull, is(nullValue()));
 	}
 
 	@Test(expected=ActivationImpossibleException.class)

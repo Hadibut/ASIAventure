@@ -124,8 +124,7 @@ public class Serrure extends Objet implements Activable {
 
 				if (this.etat == Etat.VERROUILLE)
 					this.etat = Etat.DEVERROUILLE;
-
-				if (this.etat == Etat.DEVERROUILLE)
+				else
 					this.etat = Etat.VERROUILLE;
 			}
 		}
