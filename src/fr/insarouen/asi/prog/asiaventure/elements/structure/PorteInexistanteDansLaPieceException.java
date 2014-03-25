@@ -6,7 +6,6 @@ public class PorteInexistanteDansLaPieceException extends ElementStructurelExcep
 		super();
 	}
 
-
 	public PorteInexistanteDansLaPieceException(String msg) {
 		super(msg);
 	}

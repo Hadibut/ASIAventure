@@ -6,7 +6,6 @@ public class PieceException extends ElementStructurelException {
 		super();
 	}
 
-
 	public PieceException(String msg) {
 		super(msg);
 	}

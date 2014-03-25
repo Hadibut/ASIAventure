@@ -6,7 +6,6 @@ public class PorteFermeException extends ElementStructurelException {
 		super();
 	}
 
-
 	public PorteFermeException(String msg) {
 		super(msg);
 	}

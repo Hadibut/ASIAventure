@@ -6,7 +6,6 @@ public class VivantAbsentDeLaPieceException extends PieceException {
 		super();
 	}
 
-
 	public VivantAbsentDeLaPieceException(String msg) {
 		super(msg);
 	}

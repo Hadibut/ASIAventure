@@ -4,6 +4,7 @@ import fr.insarouen.asi.prog.asiaventure.*;
 import fr.insarouen.asi.prog.asiaventure.elements.Entite;
 
 public abstract class ElementStructurel extends Entite {
+	
 	/**
 	 * Crée une nouvelle Entite
 	 * @param String nom

@@ -7,10 +7,10 @@ import java.util.*;
 
 public class Piece extends ElementStructurel {
 
-	
 	private HashMap<String,Porte> portes;
 	private HashMap<String,Vivant> vivants;
 	private HashMap<String,Objet> objets;
+
 	/**
 	 * Crée une nouvelle Pièce
 	 * @param String nom
