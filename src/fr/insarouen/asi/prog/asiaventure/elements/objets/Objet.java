@@ -16,9 +16,10 @@ public abstract class Objet extends Entite {
 
 		super(nom, monde);
 	}
+	
 	/**
 	 * Dire si un objet est deplacable
-	 * @return Boolean par deffaut false
+	 * @return Boolean, par defaut false
 	 */
 	public boolean estDeplacable() {
 
