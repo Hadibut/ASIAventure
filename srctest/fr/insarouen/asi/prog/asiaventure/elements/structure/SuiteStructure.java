@@ -10,7 +10,6 @@ import fr.insarouen.asi.prog.asiaventure.elements.structure.TestPiece;
 @SuiteClasses({
 
 	TestPiece.class,
-	TestPorte.class,
-	TestSerrure.class
+	TestPorte.class
 })
 public class SuiteStructure {}

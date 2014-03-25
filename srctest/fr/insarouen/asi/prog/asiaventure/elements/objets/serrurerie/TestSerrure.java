@@ -1,70 +1,66 @@
-package fr.insarouen.asi.prog.asiaventure.elements.structure;
+package fr.insarouen.asi.prog.asiaventure.elements.objets.serrurerie;
 
 import fr.insarouen.asi.prog.asiaventure.*;
 import fr.insarouen.asi.prog.asiaventure.elements.*;
-import fr.insarouen.asi.prog.asiaventure.elements.objets.serrurerie.*;
-import fr.insarouen.asi.prog.asiaventure.elements.objets.Objet;
-import fr.insarouen.asi.prog.asiaventure.elements.objets.PiedDeBiche;
-import fr.insarouen.asi.prog.asiaventure.elements.vivants.Vivant;
+import fr.insarouen.asi.prog.asiaventure.elements.objets.*;
 
 import org.junit.*;
-import static org.hamcrest.core.Is.*;
+import static org.hamcrest.core.IsEqual.*;
+import static org.hamcrest.core.IsNull.nullValue;
+import static org.hamcrest.core.IsInstanceOf.instanceOf;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
-
 public class TestSerrure {
+
 	public Monde monde;
 	public Serrure serrure;
 	public Clef clef;
-	public Piece pieceA;
-	public Piece pieceB;
-	public Porte porte;
 
 	@Before
 	public void avantTest()
 	throws NomDEntiteDejaUtiliseDansLeMondeException {
 
 		this.monde = new Monde("test");
-		this.serrure = new Serrure(this.monde);
-		this.pieceA = new Piece("PièceA", this.monde);
-		this.pieceB = new Piece("PièceB", this.monde);
-		this.porte = new Porte("Porte", this.monde, this.serrure, this.pieceA, this.pieceB);
-
+		this.serrure = new Serrure("serrure", this.monde);
 		this.clef = this.serrure.creerClef();
 	}
 
 	@Test
-	public void testConstructeur() {
+	public void testDeplacable() {
 
-		assertThat(this.porte.getEtat(), is(Etat.VERROUILLE));
+		assertThat(this.serrure.estDeplacable(), is(false));
 	}
 
 	@Test
-	public void testClef()
+	public void testCreerClef()
 	throws NomDEntiteDejaUtiliseDansLeMondeException {
 
+		assertThat(this.clef, instanceOf(Clef.class));
 
 		Clef clefNull = this.serrure.creerClef();
-		assertNull(clefNull);
+		assertThat(this.clef, is(nullValue()));
 	}
 
 	@Test(expected=ActivationImpossibleException.class)
-	public void testActiver()
+	public void testActiverSansObjet()
 	throws ActivationImpossibleException {
 
 		this.serrure.activer();
 	}
 
-	@Test(expected=ActivationImpossibleException.class)
-	public void testActiverAvecMauvaiseClef()
-	throws NomDEntiteDejaUtiliseDansLeMondeException, ActivationImpossibleException {
+	@Test
+	public void testActivableAvecObjet()
+	throws NomDEntiteDejaUtiliseDansLeMondeException {
 
-		Serrure mauvaiseSerrure = new Serrure(this.monde);
-		Porte mauvaisePorte = new Porte("Mauvaise Porte", this.monde, mauvaiseSerrure, this.pieceA, this.pieceB);
-		Clef mauvaiseClef = mauvaiseSerrure.creerClef();
+		assertThat(this.serrure.activableAvec(this.clef), is(true));
 
-		this.serrure.activerAvec(mauvaiseClef);
+		PiedDeBiche piedDeBiche = new PiedDeBiche("Pied de biche", this.monde);
+		assertThat(this.serrure.activableAvec(piedDeBiche), is(true));
+
+		Serrure autreSerrure = new Serrure("Deuxième serrure", this.monde);
+		Clef autreClef = autreSerrure.creerClef();
+		assertThat(this.serrure.activableAvec(autreClef), is(false));
 	}
 
 	@Test
@@ -91,4 +87,3 @@ public class TestSerrure {
 		assertThat(this.serrure.getEtat(), is(Etat.CASSE));
 	}
 }
-
