@@ -26,7 +26,7 @@ public class Simulateur {
 	public Simulateur(java.io.ObjectInputStream ois) 
 	throws IOException, java.lang.ClassNotFoundException {
 
-
+		this.monde = (Monde) ois.readObject();
 	}
 
 	public Simulateur(java.io.Reader reader) 
@@ -134,7 +134,7 @@ public class Simulateur {
 	
 	public void enregistrer(java.io.ObjectOutputStream oos) throws java.io.IOException {
 
-
+		oos.writeObject(this.monde);
 	}	
 
 	// public void ajouterConditionsDeFin(java.util.Collection<ConditionDeFin> conditions) {
