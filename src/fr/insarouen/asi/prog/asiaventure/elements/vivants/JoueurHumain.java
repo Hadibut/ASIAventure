@@ -5,7 +5,10 @@ import fr.insarouen.asi.prog.asiaventure.elements.objets.*;
 import fr.insarouen.asi.prog.asiaventure.elements.structure.*;
 import fr.insarouen.asi.prog.asiaventure.elements.*;
 import fr.insarouen.asi.prog.asiaventure.*;
+
 import java.util.*;
+import java.lang.reflect.Method;
+import java.lang.reflect.InvocationTargetException;
 
 public class JoueurHumain extends Vivant {
 
@@ -14,6 +17,7 @@ public class JoueurHumain extends Vivant {
 	private int pointForce;
 	private HashMap<String,Objet> objets;
 	private String ordre;
+
 
 
 /**
@@ -33,33 +37,63 @@ public class JoueurHumain extends Vivant {
 		super(nom, monde, pointVie, pointForce, piece, objets);
 	}	
 
-	public void executer()  {
+	public void executer() 
+	throws Throwable {
 
-		// String ordre1;
-		// String ordre2;
-		// String ordre3;
 
-		// switch () {
-		// 	case 1 : ordre1 = "ouvrir";
-		// 		commandeOuvrirPorte(ordre2);
-		// 		break;
-		// 	case 2 : ordre1 = "ouvrirAvec";	
-		// 		commandeOuvrirPorte(ordre2,ordre3)
-		// 		break;
-		// 	case 3 : ordre1 = "franchir";
-		// 		commandeFranchir(ordre2);
-		// 		break;	
-		// 	case 4 : ordre1 = "prendre";
-		// 		commandePrendre(ordre2);
-		// 		break;
-		// 	case 5 : ordre1 = "deposer";
-		// 		commandePoser(ordre2);		
-		// }
+		String[] parametresOrdre = this.getParametresOrdre(this.ordre.split(" "));
+		
+		try {
+
+			this.getMethodeOrdre(this.ordre.split(" ")).invoke(this, (Object[]) parametresOrdre);
+
+		}
+		catch (InvocationTargetException e) {
+			
+			throw e.getCause();
+		}
+		catch (Exception e) {
+
+			throw new CommandeImpossiblePourLeVivantException("Impossible de lancer cette commande");
+		}
 	}	
+
+
+	private Method getMethodeOrdre(String[] parametres) 
+	throws NoSuchMethodException {
+
+		if (parametres.length == 2)
+			return this.getClass().getMethod("commande" + parametres[0].substring(0, 1).toUpperCase() + parametres[0].substring(1), String.class);
+		else
+			return this.getClass().getMethod("commande" + parametres[0].substring(0, 1).toUpperCase() + parametres[0].substring(1), String.class, String.class); 
+
+	}
+
+
+	private String[] getParametresOrdre(String[] parametres) {
+
+		String[] resultat;
+
+		if (parametres.length > 2) {
+			
+			resultat = new String[2];
+			resultat[0] = parametres[1];
+			resultat[1] = parametres[3];
+		}
+		else {
+			
+			resultat = new String[1];
+			resultat[0] = parametres[1];
+		}
+
+		return resultat;
+	}
+
+
 
 	public void setOrdre (String ordre) {
 
-		this.ordre = ordre ;
+		this.ordre = ordre;
 
 	}
 
