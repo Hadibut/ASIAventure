@@ -40,12 +40,12 @@ public class Serrure extends Objet implements Activable {
 	private static String genererNomSerrure(Monde monde) {
 
 		int numeroSerrure = (int)(Math.random() * (Serrure.MAXIMUMNOMALEATOIRE));
-		String nomSerrure = "Serrure n°" + numeroSerrure;
+		String nomSerrure = "Serrure" + numeroSerrure;
 
 		while (monde.getEntite(nomSerrure) != null) {
 
 			numeroSerrure = (int)(Math.random() * (Serrure.MAXIMUMNOMALEATOIRE));
-			nomSerrure = new String("Serrure n°" + numeroSerrure);
+			nomSerrure = new String("Serrure" + numeroSerrure);
 		}
 
 		return nomSerrure;
@@ -63,12 +63,12 @@ public class Serrure extends Objet implements Activable {
 			return null;
 
 		int numeroClef = (int)(Math.random() * (this.MAXIMUMNOMALEATOIRE));
-		String nomClef = new String("Clef n°" + numeroClef);
+		String nomClef = new String("Clef" + numeroClef);
 
 		while (this.getMonde().getEntite(nomClef) != null) {
 
 			numeroClef = (int)(Math.random() * (this.MAXIMUMNOMALEATOIRE));
-			nomClef = new String("Clef n°" + numeroClef);
+			nomClef = new String("Clef" + numeroClef);
 		}
 
 		this.clef = new Clef(nomClef, this.getMonde());

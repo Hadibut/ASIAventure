@@ -10,17 +10,11 @@ import java.util.*;
 import java.lang.reflect.Method;
 import java.lang.reflect.InvocationTargetException;
 
-public class JoueurHumain extends Vivant {
+public class JoueurHumain extends Vivant implements Executable {
 
-	private Piece piece;
-	private int pointVie;
-	private int pointForce;
-	private HashMap<String,Objet> objets;
 	private String ordre;
 
-
-
-/**
+	/**
 	 * Crée un nouveau joueur humain
 	 * @param String nom
 	 * @param Monde monde
@@ -39,7 +33,6 @@ public class JoueurHumain extends Vivant {
 
 	public void executer() 
 	throws Throwable {
-
 
 		String[] parametresOrdre = this.getParametresOrdre(this.ordre.split(" "));
 		
@@ -97,30 +90,30 @@ public class JoueurHumain extends Vivant {
 
 	}
 
-	private void commandePrendre(String nomObjet) throws ObjetAbsentDeLaPieceException, ObjetNonDeplacableDeLaPieceException {
+	public void commandePrendre(String nomObjet) throws ObjetAbsentDeLaPieceException, ObjetNonDeplacableDeLaPieceException {
 
 		this.prendre(nomObjet);
 	}
 
-	private void commandePoser(String nomObjet) throws ObjetNonPossedeParLeVivantException {
+	public void commandePoser(String nomObjet) throws ObjetNonPossedeParLeVivantException {
 
 		this.deposer(nomObjet);
 	}
 	
-	private void commandeFranchir(String nomPorte) throws PorteFermeException, PorteInexistanteDansLaPieceException {
+	public void commandeFranchir(String nomPorte) throws PorteFermeException, PorteInexistanteDansLaPieceException {
 
 		this.franchir(nomPorte);
 	}
 	
-	private void commandeOuvrirPorte(String nomPorte) throws ActivationImpossibleException {
+	public void commandeOuvrirPorte(String nomPorte) throws ActivationImpossibleException {
 
-		this.piece.getPorte(nomPorte).activer();
+		this.getPiece().getPorte(nomPorte).activer();
 
 	} 	
 
-	private void commandeOuvrirPorte(String nomPorte, String nomObjet)throws ActivationImpossibleException, ObjetNonPossedeParLeVivantException{
+	public void commandeOuvrirPorte(String nomPorte, String nomObjet)throws ActivationImpossibleException, ObjetNonPossedeParLeVivantException{
 
-		this.piece.getPorte(nomPorte).activerAvec(this.getObjet(nomObjet));
+		this.getPiece().getPorte(nomPorte).activerAvec(this.getObjet(nomObjet));
 
 	}  	
 

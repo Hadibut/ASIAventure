@@ -1,8 +1,9 @@
 package fr.insarouen.asi.prog.asiaventure.elements;
 
 import fr.insarouen.asi.prog.asiaventure.*;
+import java.io.Serializable;
 
-public abstract class Entite {
+public abstract class Entite implements Serializable {
 
 	public final static int MAXIMUMNOMALEATOIRE = 42;
 	private Monde monde;

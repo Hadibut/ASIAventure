@@ -8,11 +8,11 @@ import java.util.*;
 
 public class Vivant extends Entite {
 
-	
 	private Piece piece;
 	private int pointVie;
 	private int pointForce;
 	private HashMap<String,Objet> objets;
+
 	/**
 	 * Crée un nouveau Vivant
 	 * @param String nom
@@ -236,7 +236,7 @@ public class Vivant extends Entite {
 	public String toString() {
 
 		StringBuilder chaine = new StringBuilder();
-		chaine.append("\n Le vivant appelé \" ");
+		chaine.append("\nVivant appelé \"");
 		chaine.append(this.getNom());
 		chaine.append("\" (");
 		chaine.append(this.piece.getNom());

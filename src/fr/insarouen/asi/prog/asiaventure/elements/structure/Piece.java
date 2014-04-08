@@ -226,7 +226,7 @@ public class Piece extends ElementStructurel {
 	public String toString() {
 
 		StringBuilder chaine = new StringBuilder();
-		chaine.append("\nObjet Pièce appelé : \"");
+		chaine.append("\nPièce appelée : \"");
 		chaine.append(this.getNom());
 		chaine.append("\" : \n");
 
@@ -259,6 +259,22 @@ public class Piece extends ElementStructurel {
 				chaine.append("\n   * ");
 				chaine.append(nomVivant);
 				chaine.append(" ");
+			}
+		}
+
+		if (this.portes.size() == 0) {
+			
+			chaine.append("\n * Aucune porte");
+		}
+		else {
+
+			chaine.append("\n * Portes :");
+
+			for (Porte porte : this.portes.values()) {
+				
+				chaine.append("\n   * ");
+				chaine.append(porte.getNom());
+				chaine.append(" (" + porte.getEtat() + ") ");
 			}
 		}
 

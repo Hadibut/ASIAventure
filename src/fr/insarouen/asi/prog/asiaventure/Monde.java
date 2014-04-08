@@ -1,9 +1,10 @@
 package fr.insarouen.asi.prog.asiaventure;
 
-import fr.insarouen.asi.prog.asiaventure.elements.Entite;
+import fr.insarouen.asi.prog.asiaventure.elements.*;
 import java.util.*;
+import java.io.Serializable;
 
-public class Monde {
+public class Monde implements Serializable {
 	private String nomMonde;
 	private HashMap<String,Entite> entites;
 
@@ -66,5 +67,20 @@ public class Monde {
 		}
 
 		return chaine.toString();
+	}
+
+	public Collection<Executable> getExecutables() {
+
+		Collection<Executable> executables = new ArrayList<Executable>();
+
+		for(Entite entite : this.entites.values()) {
+
+			if (entite instanceof Executable) {
+				
+				executables.add((Executable)entite);
+			}
+		}
+
+		return executables;
 	}
 }
