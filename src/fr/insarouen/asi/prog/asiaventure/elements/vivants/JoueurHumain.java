@@ -105,13 +105,13 @@ public class JoueurHumain extends Vivant implements Executable {
 		this.franchir(nomPorte);
 	}
 	
-	public void commandeOuvrirPorte(String nomPorte) throws ActivationImpossibleException {
+	public void commandeOuvrirPorte(String nomPorte) throws ActivationImpossibleException, PorteInexistanteDansLaPieceException {
 
 		this.getPiece().getPorte(nomPorte).activer();
 
 	} 	
 
-	public void commandeOuvrirPorte(String nomPorte, String nomObjet)throws ActivationImpossibleException, ObjetNonPossedeParLeVivantException{
+	public void commandeOuvrirPorte(String nomPorte, String nomObjet)throws ActivationImpossibleException, PorteInexistanteDansLaPieceException, ObjetNonPossedeParLeVivantException{
 
 		this.getPiece().getPorte(nomPorte).activerAvec(this.getObjet(nomObjet));
 

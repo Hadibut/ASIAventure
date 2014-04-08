@@ -131,9 +131,15 @@ public class Piece extends ElementStructurel {
 	 * @param String nomPorte
 	 * @return Porte porte récupérée
 	 */
-	public Porte getPorte(String nomPorte) {
+	public Porte getPorte(String nomPorte)
+	throws PorteInexistanteDansLaPieceException {
 
-		return this.portes.get(nomPorte);
+
+		Porte porte = this.portes.get(nomPorte);
+		if (porte == null)
+			throw new PorteInexistanteDansLaPieceException("La porte " + nomPorte + "n'existe pas.");
+
+		return porte;
 	}
 
 	/**

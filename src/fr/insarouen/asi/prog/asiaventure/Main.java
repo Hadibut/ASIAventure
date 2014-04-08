@@ -121,6 +121,7 @@ public class Main {
 			catch (InputMismatchException e) {
 				
 				System.out.println("\nUn nombre est requis");
+				input.next();
 			}
 
 		} while (!quitter);
