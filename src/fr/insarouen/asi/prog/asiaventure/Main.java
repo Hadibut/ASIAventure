@@ -141,8 +141,8 @@ public class Main {
             catch (InputMismatchException e) {
                 
                 System.out.println("\n--- ERREUR ---");
-                            System.out.println("Un nombre est requis.");
-                            input.next();
+                System.out.println("Un nombre est requis.");
+                input.next();
             }
             
         } while (!quitter);
