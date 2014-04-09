@@ -195,13 +195,14 @@ public class Simulateur {
 		Collection<Executable> executables = this.monde.getExecutables();
 
 		for (Executable executable : executables) {
+
 			if (executable instanceof JoueurHumain) {
 				
 				JoueurHumain joueur = (JoueurHumain) executable;
 				System.out.println(joueur);
 				System.out.println(joueur.getPiece());
 
-				System.out.println("\nQue voulez vous faire ?");
+				System.out.println("\n" + joueur.getNom()  + " : que voulez vous faire ? (tapez \"aide\" pour afficher les commandes disponibles)");
 				Scanner input = new Scanner(System.in);
 				String ordre = input.nextLine();
 
@@ -216,7 +217,9 @@ public class Simulateur {
 				executable.executer();
 			}
 			catch(ASIAventureException e) {
-				System.out.println(e.getMessage());
+
+                            System.out.println("\n--- ERREUR ---");
+                            System.out.println(e.getMessage());
 			}
 		}
 

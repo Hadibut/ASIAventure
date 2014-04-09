@@ -54,6 +54,9 @@ public class Porte extends ElementStructurel implements Activable {
 			this.etat = Etat.FERME;
 		else
 			this.etat = serrure.getEtat();
+
+                this.pieceA.addPorte(this);
+                this.pieceB.addPorte(this);
 	}
 
 	/**

@@ -34,50 +34,60 @@ public class JoueurHumain extends Vivant implements Executable {
 	public void executer() 
 	throws Throwable {
 
-		String[] parametresOrdre = this.getParametresOrdre(this.ordre.split(" "));
-		
-		try {
+            try {
 
-			this.getMethodeOrdre(this.ordre.split(" ")).invoke(this, (Object[]) parametresOrdre);
+		String[] parametresOrdre = this.getParametresOrdre(this.ordre.split(" "));
+	
+                try {
+
+                    this.getMethodeOrdre(this.ordre.split(" ")).invoke(this, (Object[]) parametresOrdre);
 
 		}
 		catch (InvocationTargetException e) {
 			
-			throw e.getCause();
+                    throw e.getCause();
 		}
 		catch (Exception e) {
 
-			throw new CommandeImpossiblePourLeVivantException("Impossible de lancer cette commande");
-		}
+                    throw new CommandeImpossiblePourLeVivantException("Impossible de lancer cette commande");
+		}            
+            }
+            catch (ArrayIndexOutOfBoundsException e) {
+
+                throw new CommandeImpossiblePourLeVivantException("Mauvais nombre d'arguments. (1, 2 ou 4 mots requis)");
+            }
 	}	
 
 
 	private Method getMethodeOrdre(String[] parametres) 
 	throws NoSuchMethodException {
 
-		if (parametres.length == 2)
-			return this.getClass().getMethod("commande" + parametres[0].substring(0, 1).toUpperCase() + parametres[0].substring(1), String.class);
-		else
-			return this.getClass().getMethod("commande" + parametres[0].substring(0, 1).toUpperCase() + parametres[0].substring(1), String.class, String.class); 
-
+		if (parametres.length == 4)
+                    return this.getClass().getMethod("commande" + parametres[0].substring(0, 1).toUpperCase() + parametres[0].substring(1), String.class, String.class);
+		else if (parametres.length == 2)
+                    return this.getClass().getMethod("commande" + parametres[0].substring(0, 1).toUpperCase() + parametres[0].substring(1), String.class); 
+                else
+                    return this.getClass().getMethod("commande" + parametres[0].substring(0, 1).toUpperCase() + parametres[0].substring(1)); 
 	}
 
 
-	private String[] getParametresOrdre(String[] parametres) {
+	private String[] getParametresOrdre(String[] ordres) {
 
 		String[] resultat;
 
-		if (parametres.length > 2) {
+		if (ordres.length > 2) {
 			
 			resultat = new String[2];
-			resultat[0] = parametres[1];
-			resultat[1] = parametres[3];
+			resultat[0] = ordres[1];
+			resultat[1] = ordres[3];
 		}
-		else {
+		else if (ordres.length == 2) {
 			
 			resultat = new String[1];
-			resultat[0] = parametres[1];
+			resultat[0] = ordres[1];
 		}
+                else
+                    resultat = new String[0];
 
 		return resultat;
 	}
@@ -115,6 +125,17 @@ public class JoueurHumain extends Vivant implements Executable {
 
 		this.getPiece().getPorte(nomPorte).activerAvec(this.getObjet(nomObjet));
 
-	}  	
+	}
+
+public void commandeAide() {
+    
+    System.out.println("\n--- AIDE ---");
+    System.out.println("Commandes disponibles :");
+    System.out.println("    * ouvrirPorte nomPorte");
+    System.out.println("    * ouvrirPorte nomPorte avec nomObjet");
+    System.out.println("    * franchir nomPorte");
+    System.out.println("    * prendre nomObjet");
+    System.out.println("    * poser nomObjet");
+}
 
 }
